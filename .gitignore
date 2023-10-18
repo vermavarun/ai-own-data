@@ -4,3 +4,6 @@ lib
 pyvenv.cfg
 share
 .env
+.venv
+persist
+data_dir
