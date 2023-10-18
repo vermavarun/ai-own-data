@@ -35,11 +35,17 @@ def ask():
     chain = ConversationalRetrievalChain.from_llm(
         llm=ChatOpenAI(model="gpt-3.5-turbo"),
         retriever=index.vectorstore.as_retriever(search_kwargs={"k": 1}),
+        return_source_documents=True,
         )
     chat_history = []
     result  = chain({"question": question,"chat_history":chat_history})
-    print(result)
+    #print(result)
     print(result['answer'])
+    source_documents = result['source_documents']
+    for doc in source_documents:
+        print(doc.metadata['source'])
+        print(doc.metadata['page'])
+        print(doc.page_content)
 
 if __name__ == "__main__":
     #test()
