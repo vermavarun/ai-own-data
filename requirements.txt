@@ -6,3 +6,4 @@ tiktoken
 unstructured
 unstructured[pdf]
 pypdf
+transformers
